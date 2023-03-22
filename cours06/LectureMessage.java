@@ -8,14 +8,14 @@ public class LectureMessage {
 	private PrintWriter to = null;
 	private Socket s;
 	
-	/** Création d'un connexion TCP avec le port du MDA 
+	/** Crï¿½ation d'un connexion TCP avec le port du MDA 
 	 * 
 	 * @param POP nom du MDA
-	 * @param port port MDA (en général 110)
+	 * @param port port MDA (en gï¿½nï¿½ral 110)
 	 */
 	public LectureMessage(String POP, int port)
 	{
-		// création de la socket
+		// crï¿½ation de la socket
 		s = new Socket();
 		InetAddress MUA = null;
 		try {
@@ -37,7 +37,7 @@ public class LectureMessage {
 		
 		// demande de connexion
 		s.connect(saddr2, 500);
-		System.out.println("Connexion établie entre " +
+		System.out.println("Connexion ï¿½tablie entre " +
 				s.getLocalSocketAddress() + " et " +
 				s.getRemoteSocketAddress());
 	    }
@@ -45,17 +45,17 @@ public class LectureMessage {
 			System.out.println("erreur d'ouverture");
 			}
 	
-	// Création des flots
+	// Crï¿½ation des flots
 	try {
 	from = new BufferedReader(new InputStreamReader(s.getInputStream()));
 	to = new PrintWriter(s.getOutputStream(), true);
 	}
 	catch (IOException exp){
-		System.out.println("erreur de création des flots");
+		System.out.println("erreur de crï¿½ation des flots");
 		}
 	}
 	
-	/** passage dans l'état transaction d'un utilisateur donné
+	/** passage dans l'ï¿½tat transaction d'un utilisateur donnï¿½
 	 * @param user nom de l'utilisateur
 	 * @param password mot de passe de l'utilisateur
 	 */
@@ -70,14 +70,14 @@ public class LectureMessage {
 			sMUA = "PASS " + password;
 			System.err.print(sMUA + " "); to.println(sMUA); 
 			sMTA = from.readLine(); System.err.println(sMTA);
-			System.err.println("Passage dans l'état transaction");
+			System.err.println("Passage dans l'ï¿½tat transaction");
 		}
 		catch (Exception e) {
 			System.err.println(e);
 		}
 	}
 
-	/** nombre de messages d'un utilisateur donné
+	/** nombre de messages d'un utilisateur donnï¿½
 	 * @param user nom de l'utilisateur 
 	 * @param password mot de passe de l'utilisateur
 	 * @return nombre de messages
@@ -102,7 +102,7 @@ public class LectureMessage {
 			return nMessages++;
 		}
 		
-	/** lecture d'un message donné d'un utilisateur donné
+	/** lecture d'un message donnï¿½ d'un utilisateur donnï¿½
 	 * @param im index du message
 	 * @param user nom de l'utilisateur 
 	 * @param password mot de passe de l'utilisateur
@@ -121,12 +121,12 @@ public class LectureMessage {
 		return message;
 	}
 	
-	/** destruction d'un message donné d'un utilisateur donné
+	/** destruction d'un message donnï¿½ d'un utilisateur donnï¿½
 	 * @param im index du message
 	 * @param user nom de l'utilisateur 
 	 * @param password mot de passe de l'utilisateur
 	 */
-	void détruire(int im, String user, String password) {
+	void detruire(int im, String user, String password) {
 		String str = null;
 		transaction(user, password);
 		try {
@@ -141,7 +141,7 @@ public class LectureMessage {
 	/** fermeture de la connexion */
 	public void fin() {
 		try { to.println("QUIT"); s.close(); }
-		catch( Exception e) {System.out.println("Erreur réseau");}	
+		catch( Exception e) {System.out.println("Erreur rï¿½seau");}	
 	}
 
 }
