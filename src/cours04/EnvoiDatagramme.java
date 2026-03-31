@@ -22,7 +22,7 @@ public class EnvoiDatagramme {
 	    // adresse de la machine distante
 	    InetSocketAddress saddr = null;
 		try {
-			InetAddress addr = InetAddress.getByName("192.168.1.75");
+			InetAddress addr = InetAddress.getByName("192.168.1.41");
 			saddr = new InetSocketAddress(addr, port);
 			}
 		catch (UnknownHostException exp){
